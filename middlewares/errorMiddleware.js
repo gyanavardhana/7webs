@@ -4,7 +4,7 @@ const ifError = async(err, req, res, next) => {
         if(err.code === cons.mongoerror) {
             res.status(cons.conflict).send(cons.userexists);
         }else{
-            res.status(cons.internalServerError).send('Internal Server Error');
+            res.status(cons.internalerror).send('Internal Server Error');
         }
     }
     else{

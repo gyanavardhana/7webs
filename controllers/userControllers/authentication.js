@@ -17,7 +17,7 @@ const register = async (req, res, next) => {
     );
     try {
         const newUser = await user.save();
-        res.status(cons.ok).json(newUser);
+        res.status(cons.ok).json({ message: cons.success, newUser })
     }
     catch (err) {
         next(err)
@@ -69,5 +69,6 @@ const logout = async (req, res, next) => {
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    comparePassword,
 }

@@ -18,7 +18,7 @@ const postBooking = async (req, res, next) => {
 
         const bookedSlot = availability.slots.find(s => slot.start <= s.start && slot.end <= s.end);
         if (!bookedSlot || bookedSlot.maxCapacity <= 0) {
-            return res.status(cons.conflict).json({ error: cons.notavailable });
+            res.status(cons.conflict).json({ error: cons.notavailable });
         }
 
         const booking = new Booking({
