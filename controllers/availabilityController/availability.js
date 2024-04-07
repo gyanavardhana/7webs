@@ -13,8 +13,7 @@ const postAvailability = async (req, res, next) => {
         res.status(cons.created).json(newAvailability);
     }
     catch (err) {
-        res.status(cons.internalerror).json(err);
-        next();
+        next(err);
     }
 }
 
@@ -29,8 +28,7 @@ const getAvailability = async(req,res,next) => {
         res.status(cons.ok).json(slots);
     }
     catch (err) {
-        res.status(cons.internalerror).json(err);
-        next();
+        next(err);
     }
 
 
