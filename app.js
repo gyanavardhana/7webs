@@ -3,6 +3,8 @@ const express = require("express");
 const db = require("./db/dbConnection");
 const app = express();
 const userRoutes = require("./routes/userRoutes");
+const availabilityRoutes = require("./routes/availabilityRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 const port = 3000;
 
 app.get("/", (req, res) => {
@@ -11,6 +13,8 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 app.use(userRoutes);
+app.use(availabilityRoutes);
+app.use(bookingRoutes);
 
 
 

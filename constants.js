@@ -13,7 +13,9 @@ const cons = {
     "wrongpass": "Wrong Password",
     "invalidLogin": "Invalid Login",
     "success": "Login Successful",
-    "logout": "Logout Successful"
+    "logout": "Logout Successful",
+    "notavailable": "Slot is not available",
+    "successful": "Booking scheduled Successful"
 }
 
 module.exports = cons;
