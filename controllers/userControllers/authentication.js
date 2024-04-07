@@ -17,7 +17,7 @@ const register = async (req, res, next) => {
     );
     try {
         const newUser = await user.save();
-        res.status(cons.ok).json(newUser);
+        res.status(cons.ok).json({ message: cons.success, newUser })
     }
     catch (err) {
         next(err)
@@ -41,7 +41,7 @@ const login = async (req, res, next) => {
     try {
         const user = await User.findOne({ email: email });
         if (user) {
-            const validPassword = await comparePassword(password, user);
+            const validPassword = await comparePassword(password, user.password);
             if (!validPassword) {
                 res.status(cons.badrequest).json(cons.wrongpass);
             }
@@ -69,5 +69,6 @@ const logout = async (req, res, next) => {
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    comparePassword,
 }
