@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 const cons = require("../../constants");
 
-
-
 const register = async (req, res, next) => {
     const username = req?.body?.username;
     const email = req?.body?.email;
@@ -22,13 +20,7 @@ const register = async (req, res, next) => {
         res.status(cons.ok).json(newUser);
     }
     catch (err) {
-        if (err.code === cons.mongoerror) {
-            res.status(cons.conflict).json(cons.userexists);
-        }
-        else {
-            res.status(cons.internalerror).json(err);
-            next();
-        }
+        next(err)
     }
 }
 
@@ -64,8 +56,7 @@ const login = async (req, res, next) => {
         }
     }
     catch (err) {
-        res.status(cons.internalerror).json(err);
-        next();
+        next(err);
     }
 }
 

@@ -16,7 +16,7 @@ const postBooking = async (req, res, next) => {
             day: new Date(date).toLocaleDateString('en-US', { weekday: 'long' })
         });
 
-        const bookedSlot = availability.slots.find(s => s.start <= slot.start && s.end >= slot.end);
+        const bookedSlot = availability.slots.find(s => slot.start <= s.start && slot.end <= s.end);
         if (!bookedSlot || bookedSlot.maxCapacity <= 0) {
             return res.status(cons.conflict).json({ error: cons.notavailable });
         }
@@ -33,8 +33,7 @@ const postBooking = async (req, res, next) => {
 
         res.status(cons.created).json({ message: cons.successful, booking });
     } catch (err) {
-        console.error('Error scheduling booking:', error);
-        res.status(cons.internalerror).json({ error: 'Internal Server Error' });
+        next(err);
     }
 }
 
@@ -43,8 +42,7 @@ const getBookings = async(req,res,next) => {
         const bookings = await Booking.find();
         res.status(cons.ok).json(bookings);
     } catch (error) {
-        console.error('Error fetching bookings:', error);
-        res.status(cons.internalerror).json({ error: 'Internal Server Error' });
+        next(err);
     }
 }
 
