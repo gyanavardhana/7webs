@@ -29,7 +29,7 @@ describe("error middleware", () => {
         };
         const next = jest.fn();
         ifError(err, req, res, next);
-        expect(res.status).toHaveBeenCalledWith(cons.internalServerError);
+        expect(res.status).toHaveBeenCalledWith(cons.internalerror);
         expect(res.send).toHaveBeenCalledWith('Internal Server Error');
     });
 

@@ -41,7 +41,7 @@ const login = async (req, res, next) => {
     try {
         const user = await User.findOne({ email: email });
         if (user) {
-            const validPassword = await comparePassword(password, user.password);
+            const validPassword = await comparePassword(password, user);
             if (!validPassword) {
                 res.status(cons.badrequest).json(cons.wrongpass);
             }
