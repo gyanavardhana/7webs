@@ -14,10 +14,13 @@ app.get("/", (req, res) => {
 
 
 app.use(express.json());
+app.use(ifError);
+
+
 app.use(userRoutes);
 app.use(availabilityRoutes);
 app.use(bookingRoutes);
-app.use(ifError);
+
 
 app.listen(port, () => {
     console.log(`app is listtening on port: ${port}`);
