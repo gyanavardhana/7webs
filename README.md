@@ -78,4 +78,6 @@ Schedule Booking,Allows users to schedule a booking.
 
 ## Postman Collection
 
+- Each API, along with its usage documentation, request body, and response format, is available in this public Postman collection. You can use it to understand how to interact with the backend endpoints effectively.
+
 You can find the Postman collection for the Salon Booking System APIs [here](https://www.postman.com/dark-zodiac-111830/workspace/for-internship/collection/28899426-e613df4e-11b5-4128-969d-ace4fccc0f00?action=share&creator=28899426).
